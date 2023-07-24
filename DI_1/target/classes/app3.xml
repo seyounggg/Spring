@@ -5,7 +5,6 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	<util:properties id="info" location="classpath:std.properties"/>
 	<bean id="std" class="com.sist.main3.Student"
 		p:hakbun="#{info['hakbun']}"
