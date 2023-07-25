@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.dao.seoul-mapper">
+  <!--
+  	입력값이 여러개인 경우 = start, end (페이지 나눌때)
+  	resultType : sql실행 결과값을 받는 경우
+  	
+  	select count(*) from emp => resultType="int"
+  	select pwd from member -> resultType="String"
+  	select pwd,name from member => resultType="MemberVO"
+  	select pwd,name from member => resultType="hashmap"
+  	=> 이경우는 VO에 없는 변수 / select max(),min(),count() ... 
+  	// resultType이 한개가 아니라 여러개라면 VO 또는 hashmap으로 받기
+  	
+  	parameterType : sql 문장에 값 채우는 경우(?에 값채우기) => 얘도 resultType과 동일함
+  	중요! VO에 있는지 없는지 잘 파악하기
+  	
+  	
+  -->
+  <select id="seoulListData" resultType="SeoulLocationVO" parameterType="hashmap">
+  	SELECT no,title,address,num
+  	FROM (SELECT no,title,address,rownum as num 
+  	FROM (SELECT no,title,address 
+  	FROM seoul_location ORDER BY no ASC))
+  	WHERE num BETWEEN #{start} AND #{end}
+  	<!--
+  		#{start} => map.get("start")
+  		Map map=new HashMap()
+  		map.put("start",1)
+  		map.put("end",10)
+  	-->
+  </select>
+  <select id="seoulTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/10.0) FROM seoul_location
+  </select>
+  <select id="seoulFindData" resultType="SeoulLocationVO" parameterType="String">
+    SELECT no,title,address,msg
+    FROM seoul_location
+    WHERE title LIKE '%'||#{title}||'%'
+  </select>
+</mapper>
