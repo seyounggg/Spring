@@ -31,6 +31,10 @@ public interface EmpDeptMapper {
 /*
 	
 */
+	@Results({
+		@Result(column = "dname",property = "dvo.dname"),
+		@Result(column = "loc",property = "dvo.loc")
+	})
 	@Select("SELECT empno,ename,job,TO_CHAR(hiredate,'yyyy-MM-dd') as dbday,sal,dname,loc "
 			+ "FROM emp,dept WHERE emp.deptno=dept.deptno AND empno=#{empno}")
 	public EmpVO empdeptDetailData(int empno);
