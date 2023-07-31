@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sist.mapper.food-mapper">
+   <select id="categoryListData" resultType="com.sist.vo.CategoryVO" parameterType="hashmap">
+   <!-- Config.xml 파일에 alias 등록을 안해서 resultType을 패키지 주소까지 포함해서 작성해야한다.
+   		TypeAlias는 선택사항!!
+   -->
+   <!-- if 조건문에 들어가있는 cno 는 db의 cno가 아니라 Map으로 받는 cno ! 일반 변수명이라고 생각하자!!vo에 없는 -->
+   SELECT cno,title,poster,subject
+   FROM food_category
+   WHERE 
+   <choose>
+     <when test="cno==1">
+       cno BETWEEN 1 AND 12
+     </when>
+     <when test="cno==2">
+       cno BETWEEN 13 AND 18
+     </when>
+     <when test="cno==3">
+       cno BETWEEN 19 AND 30
+     </when>
+   </choose>
+   <!-- <if test="cno==1">
+     cno BETWEEN 1 AND 12
+   </if>
+      <if test="cno==2">
+     cno BETWEEN 13 AND 18
+   </if>
+      <if test="cno==3">
+     cno BETWEEN 19 AND 30
+   </if> -->
+   <!--
+   	<choose>
+   	  <when test="cno==1">cno BETWEEN 1 AND 12</when>
+   	  <when test="cno==2">cno BETWEEN 13 AND 18</when>
+   	  <when test="cno==3">cno BETWEEN 19 AND 30</when>
+   	</choose>
+   -->
+   </select>
+ </mapper>
