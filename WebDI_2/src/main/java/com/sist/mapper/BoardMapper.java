@@ -1,6 +1,7 @@
 package com.sist.mapper;
 import java.util.*;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -31,4 +32,20 @@ public interface BoardMapper {
 	
 	@Select("SELECT no,name,subject,content,hit,TO_CHAR(regdate,'yyyy-MM-dd') as dbday,hit FROM springBoard WHERE no=#{vo}")
 	public BoardVO boardDetailData(int no);
+	
+	@Select("SELECT no,name,subject,content "
+			+ "FROM springBoard "
+			+ "WHERE no=#{no}")
+	public BoardVO boardUpdateData(int no);
+	
+	@Select("SELECT pwd FROM springBoard WHERE no=#{no}")
+	public String boardGetPassword(int no);
+	
+	@Update("UPDATE springBoard SET "
+			+ "name=#{name},subject=#{subject},content=#{content} "
+			+ "WHERE no=#{no}")
+	public void boardUpdate(BoardVO vo);
+	
+	@Delete("DELETE FROM springBoard WHERE no=#{no}")
+	public void boardDelete(int no);
 }

@@ -55,8 +55,14 @@ public class BoardController {
 		return "redirect:list.do";
 	}
 	// update
-	
-	// delete
+	// update.do?no=${no}
+	@GetMapping("update.do")
+	public String board_update(int no,Model model) {
+		BoardVO vo=dao.boardUpdateData(no);
+		
+		model.addAttribute("vo",vo);
+		return "board/update";
+	}
 	
 	// detail
 	/*
@@ -75,6 +81,23 @@ public class BoardController {
 		model.addAttribute("vo",vo);
 		return "board/detail";
 	}
+	
+	// delete
+	// 400 : Bad Request
+	@GetMapping("delete.do")
+	public String board_delete(int no,Model model) {
+		
+		model.addAttribute("no",no);
+		return "board/delete";
+	}
+	
+	@PostMapping("delete_ok.do")
+	public String board_delete_ok(int no,String pwd,Model model) {
+		boolean bCheck=dao.boardDelete(no, pwd);
+		model.addAttribute("bCheck",bCheck);
+		return "board/delete_ok";
+	}
+
 	
 	// find → 동적쿼리등장!!
 }
