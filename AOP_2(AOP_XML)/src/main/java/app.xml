@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<bean id="dao" class="com.sist.dao.BoardDAO"/>
+	<bean id="aspect" class="com.sist.dao.BoardAspect"/>
+	<aop:config>
+	  <aop:aspect ref="aspect">
+	    <aop:before method="before" pointcut="execution(* com.sist.dao.BoardDAO.aop*(..))"/>
+		<!--			
+			execution(* com.sist.dao.BoardDAO.aop*(..))
+			* : return형(* => 모든 것!)
+			aop.* : aop로 시작하는 모든 메소드!
+			(..) : 매개변수 없는것 ~ 있는 것 모두 다!
+			
+			ex/ com.sist.dao.BoardDAO.aop*(String) => 매개변수가 String 인 것만!!
+		 -->
+		 <aop:after method="after" pointcut="execution(* com.sist.dao.BoardDAO.aop*(..))"/>
+	  </aop:aspect>
+	</aop:config>
+
+</beans>
