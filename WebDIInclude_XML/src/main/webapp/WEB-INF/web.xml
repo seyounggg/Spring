@@ -8,7 +8,19 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/config/application-*.xml</param-value>
+		</init-param> <!-- => WebApplicationContext 자동으로 호출? -->
+		
+		<!-- Spring 5 버전 (자바로만 소스 코딩) -> 보안
+			XML태그 => Annotation으로 변경됨
+		-->
+		<!-- <init-param>
+		  <param-name>contextClass</param-name>
+		  <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
 		</init-param>
+		<init-param>
+		  <param-name>contextConfigLocation</param-name>
+		  <param-value>com.sist.config.SpringConfig</param-value>
+		</init-param> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		
