@@ -18,7 +18,7 @@ import com.sist.service.*;
 
 @Aspect
 @Component
-public class CommonAspect {
+public class CommonAspect { 
 	@Autowired
 	private FoodService service;
 	
