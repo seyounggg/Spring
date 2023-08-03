@@ -35,5 +35,5 @@
 		p:dataSource-ref="ds"
 	/>
 	<!-- Mapper 구현 -->
-	<mybatis-spring:scan base-package="com.sist.mapper" factory-ref="ssf"/>
+	<mybatis-spring:scan base-package="com.sist.mapper"/>
 </beans>

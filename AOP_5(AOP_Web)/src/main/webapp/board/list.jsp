@@ -40,8 +40,9 @@
            <td width="45%">
              <c:if test="${vo.group_tab>0 }">
                <c:forEach var="i" begin="1" end="${vo.group_tab }">
-                 &nbsp;&nbsp;<img src="re_.png">
+                 &nbsp;&nbsp;
                </c:forEach>
+               <img src="re_.png">
              </c:if>
              <a href="../board/detail.do?no=${vo.no }">${vo.subject }</a>
            </td>
@@ -54,10 +55,10 @@
       <table class="table">
         <tr>
           <td class="text-left">
-          <form method="post" action="find.do" class="inline">
-           Search:<input type="checkbox" name="fs" value="name">이름
-              <input type="checkbox" name="fs" value="subject">제목
-              <input type="checkbox" name="fs" value="content">내용
+          <form method="post" action="../board/find.do" class="inline">
+           Search:<input type="checkbox" name="fs" value="name" value="N">이름
+              <input type="checkbox" name="fs" value="subject" value="S">제목
+              <input type="checkbox" name="fs" value="content" value="C">내용
             <input type=text name=ss size=15 class="input-sm">
             <button class="btn btn-sm btn-danger">검색</button>
            </form>

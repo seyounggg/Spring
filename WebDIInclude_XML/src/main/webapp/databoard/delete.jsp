@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .row1{
-	width: 350px;
+	width: 800px;
 }
 </style>
 </head>
@@ -23,7 +23,7 @@
           </td>
         </tr>
         <tr>
-          <td class="text-center">
+          <td class="text-center inline">
             <button class="btn btn-sm btn-danger">삭제</button>
             <input type=button value=취소 class="btn btn-sm btn-info" onclick="javascript:history.back()">
           </td>
