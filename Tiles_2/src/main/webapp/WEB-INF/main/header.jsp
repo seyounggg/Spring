@@ -33,15 +33,15 @@
       </li>
       <li><a class="drop" href="#">맛집</a>
         <ul>
-          <li><a href="../member/join.do">맛집추천</a></li>
-          <li><a href="pages/full-width.html">맛집찾기</a></li>
+          <li><a href="../food/recommand.do">맛집추천</a></li>
+          <li><a href="../food/find.do">맛집찾기</a></li>
         </ul>
       </li>
  	  <li><a class="drop" href="#">서울</a>
         <ul>
-          <li><a href="pages/gallery.html">명소</a></li>
-          <li><a href="pages/full-width.html">자연</a></li>
-          <li><a href="pages/sidebar-left.html">쇼핑</a></li>
+          <li><a href="../seoul/list.do">명소</a></li>
+          <li><a href="../seoul/list.do?no=2">자연</a></li>
+          <li><a href="../seoul/list.do?no=3">쇼핑</a></li>
         </ul>
       </li>
       <li><a class="drop" href="#">스토어</a>
@@ -52,6 +52,7 @@
       </li>
       <li><a href="#">커뮤니티</a></li>
       <li><a href="#">마이페이지</a></li>
+      <li><a href="../movie/movie_rank.do">영화순위</a></li>
     </ul>
   </nav>
 </div>
