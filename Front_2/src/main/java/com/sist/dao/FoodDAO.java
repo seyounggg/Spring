@@ -30,4 +30,9 @@ public class FoodDAO {
 	public List<FoodLocationVO> foodFindData(Map map){
 		return mapper.foodFindData(map);
 	}
+	
+	// 검색 총페이지
+	public int foodFindTotalPage(String address) {
+		return mapper.foodFindTotalPage(address);
+	}
 }
