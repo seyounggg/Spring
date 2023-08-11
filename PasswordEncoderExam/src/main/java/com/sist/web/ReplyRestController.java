@@ -54,6 +54,6 @@ public class ReplyRestController {
 	@PostMapping(value="food/reply_update_vue.do", produces="text/palin;charset=utf-8")
 	public String reply_update(ReplyVO vo) {
 		dao.replyUpdate(vo);
-		return reply_list_data(vo.getNo());
+		return reply_list_data(vo.getFno());
 	}
 }

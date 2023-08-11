@@ -87,12 +87,13 @@
 						<td>
 							<table class="table" v-for="re in reply_data">
 								<tr>
-									<td class="text-left"><span>{{re.name}}</span>&nbsp;{{re.dbday}}
+									<td class="text-left">
+										<span>{{re.name}}</span>&nbsp;{{re.dbday}}
 									</td>
 									<td class="text-right">
 										<span v-if="re.id===food_detail.sessionId">
 											<input type="button" class="btn btn-xs btn-success" value="수정"
-												@cilck="replyUpdateForm(re.no)" :id="'up'+re.no">
+												@click="replyUpdateForm(re.no)" :id="'up'+re.no">
 											<input type=button class="btn btn-xs btn-info" value="삭제" @click="replyDelete(re.no)">
 										</span>
 									</td>
@@ -104,8 +105,8 @@
 								</tr>
 								<tr style="display: none;" :id="'reply'+re.no" class="updates">
 									<td colspan=2>
-										<textarea rows="3" cols="55" style="float: left" ref="msg">{{re.msg}}</textarea>
-										<input type=button value="수정하기" style="height: 65px;background-color: blue;color: white" @click="replyUpdate(re.no)">
+										<textarea rows="3" cols="55" style="float: left" id="msg">{{re.msg}}</textarea>
+										<input type=button value="댓글수정" style="height: 65px;background-color: blue;color: white" @click="replyUpdate(re.no)">
 									</td>
 								</tr>
 							</table>
@@ -166,7 +167,8 @@ new Vue({
 		// 댓글 리스트
 		axios.get('../food/reply_list_vue.do',{
 			params:{
-				fno:this.fno
+				fno:this.fno,
+				msg:this.msg
 			}
 		}).then(response=>{
 			console.log(response.data)
@@ -256,23 +258,23 @@ new Vue({
 		},
 		replyUpdateForm:function(no){
 			$('.updates').hide()
-			if(this.no==0){
-				$('#reply'+no).show()
+			if(this.no===0){
+				$('#reply'+no).show();
 				$('#up'+no).val("취소");
 				this.no=1;
 			} else {
-				$('#reply'+no).hide()
+				$('#reply'+no).hide();
 				$('#up'+no).val("수정");
 				this.no=0;
 			}
 		},
 		replyUpdate:function(no){
 			let msg=$('#msg').val()
-			if(msg===""){
-				this.$refs.msg.focus()
+			if(msg.trim()===""){
+				$('#msg').focus();
 				return;
 			}
-			alert("msg"+msg);
+			alert("msg:"+msg)
 			axios.post('../food/reply_update_vue.do',null,{
 				params:{
 					no:no,
