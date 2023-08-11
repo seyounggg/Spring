@@ -72,7 +72,7 @@ public class MemberRestController {
 				// 로그인
 				result="ok";
 				// session 저장
-				session.setAttribute("id", vo.getId());
+				session.setAttribute("id", id);
 				session.setAttribute("name", vo.getName());
 				session.setAttribute("sex", vo.getSex());
 			} else {
