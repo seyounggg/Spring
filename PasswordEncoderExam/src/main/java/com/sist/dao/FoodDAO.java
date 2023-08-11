@@ -25,4 +25,8 @@ public class FoodDAO {
 	public List<FoodVO> foodListData(int cno) {
 		return mapper.foodListData(cno);
 	}
+	
+	public FoodVO foodDetailData(int fno) {
+		return mapper.foodDetailData(fno);
+	}
 }
